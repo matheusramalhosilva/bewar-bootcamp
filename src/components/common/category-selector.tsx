@@ -13,7 +13,7 @@ export default function CategorySelector({ categories }: CategorySelectorProps) 
           <Button
             key={category.id}
             variant="ghost"
-            className="rounded-full bg-white font-semibold"
+            className="rounded-full bg-white font-semibold py-6"
           >
             {category.name}
           </Button>

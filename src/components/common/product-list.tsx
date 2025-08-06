@@ -13,7 +13,7 @@ type ProductListProps = {
 export default function ProductList({ title, products }: ProductListProps) {
   return (
     <div className="space-y-6">
-      <h3 className="px-5 font-semibold"> {title} </h3>
+      <h3 className="px-5 font-semibold text-xl"> {title} </h3>
 
       <div
         className="w-full px-5 flex gap-4 overflow-x-auto [&::-webkit-scrollbar]:hidden"

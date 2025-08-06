@@ -59,6 +59,7 @@ export const productTable = pgTable("product", {
   name: text().notNull(),
   slug: text().notNull().unique(),
   description: text().notNull(),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
 })
 
 export const productRelations = relations(productTable, ({ one, many }) => {
