@@ -23,7 +23,7 @@ const signInFormSchema = z.object({
 
 type signInFormSchemaData = z.infer<typeof signInFormSchema>
 
-export function SignInForm() {
+export default function SignInForm() {
   const form = useForm<signInFormSchemaData>({
     resolver: zodResolver(signInFormSchema),
     defaultValues: {
@@ -72,12 +72,13 @@ export function SignInForm() {
               )}
             />
           </CardContent>
+
+          <CardFooter>
+            <Button type="submit"> Entrar </Button>
+          </CardFooter>
         </form>
       </Form>
 
-      <CardFooter>
-        <Button> Entrar </Button>
-      </CardFooter>
     </Card>
   )
 }

@@ -1,7 +1,9 @@
 'use client'
 
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useRouter } from "next/navigation"
 import { useForm } from "react-hook-form"
+import { toast } from "sonner"
 import { z } from "zod"
 
 import { Button } from "@/components/ui/button"
@@ -15,6 +17,7 @@ import {
 } from "@/components/ui/card"
 import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { authClient } from "@/lib/auth-client"
 
 const signUpFormSchema = z.object({
   name: z.string().min(1, "Nome é obrigatório").trim().min(1, "Nome é obrigatório"),
@@ -30,7 +33,9 @@ const signUpFormSchema = z.object({
 
 type signUpFormSchemaData = z.infer<typeof signUpFormSchema>
 
-export function SignUpForm() {
+export default function SignUpForm() {
+  const router = useRouter()
+
   const form = useForm<signUpFormSchemaData>({
     resolver: zodResolver(signUpFormSchema),
     defaultValues: {
@@ -39,8 +44,27 @@ export function SignUpForm() {
     }
   })
 
-  function onSubmit(values: signUpFormSchemaData) {
-    console.log(values)
+  async function onSubmit(values: signUpFormSchemaData) {
+    await authClient.signUp.email({
+      name: values.name,
+      email: values.email,
+      password: values.password,
+      fetchOptions: {
+        onSuccess: () => {
+          toast.success("Conta criada com sucesso!")
+          router.push('/')
+        },
+        onError: (error) => {
+          if (error.error.code === 'USER_ALREADY_EXISTS') {
+            toast.error("E-mail já cadastrado")
+            form.setError("email", { message: "E-mail já cadastrado" })
+
+            return
+          }
+          toast.error(error.error.message)
+        }
+      }
+    })
   }
 
   return (
@@ -105,12 +129,12 @@ export function SignUpForm() {
               )}
             />
           </CardContent>
+
+          <CardFooter>
+            <Button type="submit"> Criar conta </Button>
+          </CardFooter>
         </form>
       </Form>
-
-      <CardFooter>
-        <Button> Criar conta </Button>
-      </CardFooter>
     </Card>
   )
 }
