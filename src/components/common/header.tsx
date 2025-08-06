@@ -72,7 +72,7 @@ export default function Header() {
                   <h2 className="font-semibold"> Olá. Faça seu login! </h2>
 
                   <Button asChild size="icon" variant="outline">
-                    <Link href="/authentication/sign-in">
+                    <Link href="/authentication">
                       <LogInIcon />
                     </Link>
                   </Button>
