@@ -22,7 +22,7 @@ export default function Header() {
       <Link href="/">
         <Image
           src="/logo.svg"
-          alt="Bewar Bootcamp Logo"
+          alt="Bewear Bootcamp Logo"
           width={100}
           height={26.14}
           className="h-10 w-auto"
