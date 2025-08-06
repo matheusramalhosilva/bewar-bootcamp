@@ -13,12 +13,14 @@ type ProductItemProps = {
 
 export default function ProductItem({ product }: ProductItemProps) {
   const firstProductVariant = product.variants[0]
-  console.log(firstProductVariant)
+
+  // Remove chaves e aspas do início/fim
+  const imageUrl = firstProductVariant.imageUrl.replace(/^[{\"]+|[\"}]+$/g, "");
 
   return (
     <Link className="flex flex-col gap-4" href="">
       <Image
-        src={firstProductVariant.imageUrl}
+        src={imageUrl}
         alt={firstProductVariant.name}
         width={208}
         height={208}
