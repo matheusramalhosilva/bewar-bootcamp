@@ -1,13 +1,14 @@
 import { desc } from "drizzle-orm";
 import Image from "next/image";
 
-import BrandList from "@/components/common/brand-list";
-import CategorySelector from "@/components/common/category-selector";
-import Footer from "@/components/common/footer";
-import Header from "@/components/common/header";
+import { BrandItem, BrandList, BrandRoot, BrandTitle } from "@/components/brand";
+import { CategoryItem, CategoryRoot } from "@/components/category";
 import ProductList from "@/components/common/product-list";
+import { Footer } from "@/components/footer";
+import { Header } from "@/components/header";
 import { db } from "@/db";
 import { productTable } from "@/db/schema";
+import { BRANDS_MOCK } from "@/mocks/brand-mock";
 
 export default async function Home() {
   const categories = await db.query.categoryTable.findMany({});
@@ -25,16 +26,6 @@ export default async function Home() {
     },
   })
 
-  const brands = [
-    { name: "Nike", image: "/nike.svg" },
-    { name: "Adidas", image: "/adidas.svg" },
-    { name: "Puma", image: "/puma.svg" },
-    { name: "New Balance", image: "/new-balance.svg" },
-    { name: "Converse", image: "/converse.svg" },
-    { name: "Zara", image: "/zara.svg" },
-    { name: "Polo", image: "/ralph-lauren.svg" },
-  ];
-
   return (
     <>
       <Header />
@@ -51,12 +42,24 @@ export default async function Home() {
           />
         </div>
 
-        <BrandList title="Marcas parceiras" brands={brands} />
+        <BrandRoot>
+          <BrandTitle> Marcas parceiras </BrandTitle>
+
+          <BrandList>
+            {BRANDS_MOCK?.map((brand) => (
+              <BrandItem key={brand.name} brand={brand} />
+            ))}
+          </BrandList>
+        </BrandRoot>
 
         <ProductList title="Mais vendidos" products={products} />
 
         <div className="px-5">
-          <CategorySelector categories={categories} />
+          <CategoryRoot>
+            {categories?.map((category) => (
+              <CategoryItem key={category.id} category={category} />
+            ))}
+          </CategoryRoot>
         </div>
 
         <div className="px-5">

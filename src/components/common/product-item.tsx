@@ -1,33 +1,37 @@
 'use client'
 
-import type { productTable, productVariantTable } from "@/db/schema"
-import { formatPriceInCentsToBRL } from "@/utils/money"
 import Image from "next/image"
 import Link from "next/link"
+
+import type { productTable, productVariantTable } from "@/db/schema"
+import { cn } from "@/lib/utils"
+import { formatPriceInCentsToBRL } from "@/utils/price-format"
+import { removeKeysString } from "@/utils/remove-keys-string"
 
 type ProductItemProps = {
   product: (typeof productTable.$inferSelect & {
     variants: (typeof productVariantTable.$inferSelect)[]
   })
+  textContainerClassName?: string
 }
 
-export default function ProductItem({ product }: ProductItemProps) {
+export default function ProductItem({ product, textContainerClassName }: ProductItemProps) {
   const firstProductVariant = product.variants[0]
 
-  // Remove chaves e aspas do início/fim
-  const imageUrl = firstProductVariant.imageUrl.replace(/^[{\"]+|[\"}]+$/g, "");
+  const imageUrl = removeKeysString({ str: firstProductVariant.imageUrl });
 
   return (
-    <Link className="flex flex-col gap-4" href="">
+    <Link className="flex flex-col gap-4" href={`/product/${firstProductVariant.slug}`}>
       <Image
         src={imageUrl}
         alt={firstProductVariant.name}
-        width={208}
-        height={208}
-        className="rounded-3xl"
+        sizes="100vw"
+        width={0}
+        height={0}
+        className="w-full h-auto rounded-3xl"
       />
 
-      <div className="flex flex-col gap-1 max-w-52">
+      <div className={cn('flex flex-col gap-1 max-w-52', textContainerClassName)}>
         <p className="truncate text-sm font-medium"> {product.name} </p>
 
         <p className="truncate text-xs font-medium text-muted-foreground">
@@ -35,7 +39,7 @@ export default function ProductItem({ product }: ProductItemProps) {
         </p>
 
         <p className="truncate text-sm font-semibold">
-          {formatPriceInCentsToBRL({ cents: firstProductVariant.priceInCents })}
+          {formatPriceInCentsToBRL({ priceInCents: firstProductVariant.priceInCents })}
         </p>
       </div>
     </Link>

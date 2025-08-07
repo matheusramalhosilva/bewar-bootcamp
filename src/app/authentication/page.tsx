@@ -5,9 +5,9 @@ import {
   TabsTrigger,
 } from "@/components/ui/tabs"
 
-import SignInForm from "./components/sign-in-form"
-import SignUpForm from "./components/sign-up-form"
-import Header from "@/components/common/header"
+import { Header } from "@/components/header";
+import SignInForm from "./_components/sign-in-form"
+import SignUpForm from "./_components/sign-up-form"
 
 export default function AuthenticationPage() {
   return (

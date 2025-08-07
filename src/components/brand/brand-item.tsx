@@ -1,5 +1,3 @@
-'use client'
-
 import Image from "next/image"
 
 type BrandItemProps = {
@@ -9,7 +7,7 @@ type BrandItemProps = {
   }
 }
 
-export default function BrandItem({ brand }: BrandItemProps) {
+export function BrandItem({ brand }: BrandItemProps) {
   return (
     <div className="min-w-40 max-w-40 flex flex-col gap-4">
       <div className="w-full h-20 border-2 border-accent rounded-xl flex items-center justify-center">
