@@ -28,7 +28,7 @@ export function FinishOrderButton() {
   return (
     <>
       <Button
-        className="w-full rounded-full"
+        className="w-full rounded-full cursor-pointer"
         size="lg"
         onClick={handleFinishOrder}
         disabled={finishOrderMutation.isPending}
@@ -59,7 +59,7 @@ export function FinishOrderButton() {
             na seção de “Meus Pedidos”.
           </DialogDescription>
 
-          <DialogFooter>
+          <DialogFooter className="sm:justify-center">
             <Button className="rounded-full cursor-pointer" size="lg">
               Ver meus pedidos
             </Button>
@@ -70,7 +70,7 @@ export function FinishOrderButton() {
               size="lg"
               asChild
             >
-              <Link href="/"> Voltar para a loja </Link>
+              <Link href="/"> Página inicial </Link>
             </Button>
           </DialogFooter>
         </DialogContent>
