@@ -1,6 +1,9 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { MinusIcon, PlusIcon, TrashIcon } from "lucide-react";
 import Image from "next/image";
+import { toast } from "sonner";
 
+import { removeProductFromCart } from "@/actions/remove-cart-product";
 import { formatPriceInCentsToBRL } from "@/utils/price-format";
 import { removeKeysString } from "@/utils/remove-keys-string";
 import { Button } from "../ui/button";
@@ -22,6 +25,26 @@ export function CartItem({
   productVariantPriceInCents,
   quantity,
 }: CartItemProps) {
+  const queryClient = useQueryClient();
+
+  const { mutate: removeProductFromCartMutation } = useMutation({
+    mutationKey: ['remove-cart-product'],
+    mutationFn: (itemId: string) => {
+      return removeProductFromCart({ cartItemId: itemId });
+    },
+    onSuccess: () => {
+      toast.success('Produto removido do carrinho com sucesso!');
+      queryClient.invalidateQueries({ queryKey: ['cart'] });
+    },
+    onError: () => {
+      toast.error('Erro ao remover produto do carrinho.');
+    }
+  });
+
+  function handleRemoveProductFromCart() {
+    removeProductFromCartMutation(id);
+  }
+
   const productImageUrl = removeKeysString({ str: productVariantImageUrl });
 
   return (
@@ -43,13 +66,13 @@ export function CartItem({
           </p>
 
           <div className="flex w-[100px] items-center justify-between rounded-lg border p-1">
-            <Button className="h-4 w-4" variant="ghost" onClick={() => { }}>
+            <Button className="size-4 cursor-pointer" variant="ghost" onClick={() => { }}>
               <MinusIcon />
             </Button>
 
             <p className="text-xs font-medium"> {quantity} </p>
 
-            <Button className="h-4 w-4" variant="ghost" onClick={() => { }}>
+            <Button className="size-4 cursor-pointer" variant="ghost" onClick={() => { }}>
               <PlusIcon />
             </Button>
           </div>
@@ -57,7 +80,12 @@ export function CartItem({
       </div>
 
       <div className="flex flex-col items-end justify-center gap-2">
-        <Button variant="outline" size="icon">
+        <Button
+          className="cursor-pointer"
+          variant="outline"
+          size="icon"
+          onClick={handleRemoveProductFromCart}
+        >
           <TrashIcon />
         </Button>
 

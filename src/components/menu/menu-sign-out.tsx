@@ -11,7 +11,13 @@ export function MenuSignOut() {
   }
 
   return (
-    <Button asChild size="icon" variant="outline" onClick={handleSignOut}>
+    <Button
+      asChild
+      size="icon"
+      variant="outline"
+      className="cursor-pointer"
+      onClick={handleSignOut}
+    >
       <LogOutIcon />
     </Button>
   )

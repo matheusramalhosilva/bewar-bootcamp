@@ -7,7 +7,7 @@ type CartCompletePurchaseProps = ComponentProps<"button">
 
 export function CartCompletePurchase({ ...rest }: CartCompletePurchaseProps) {
   return (
-    <Button className="mt-5 rounded-full" {...rest}>
+    <Button className="mt-5 rounded-full cursor-pointer" {...rest}>
       Finalizar compra
     </Button>
   );

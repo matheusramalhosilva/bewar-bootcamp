@@ -12,7 +12,7 @@ export function CategoryItem({ category }: CategoryItemProps) {
     <Button
       key={category.id}
       variant="ghost"
-      className="rounded-full bg-white font-semibold py-6"
+      className="rounded-full bg-white font-semibold py-6 cursor-pointer"
       asChild
     >
       <Link href={`/category/${category.slug}`}> {category.name} </Link>

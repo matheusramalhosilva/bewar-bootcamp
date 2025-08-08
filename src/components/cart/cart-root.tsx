@@ -21,7 +21,7 @@ export function CartRoot({ name, children }: CartRootProps) {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button variant="outline" size="icon">
+        <Button variant="outline" size="icon" className="cursor-pointer">
           <ShoppingBasketIcon />
         </Button>
       </SheetTrigger>

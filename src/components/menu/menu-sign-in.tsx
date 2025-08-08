@@ -8,7 +8,7 @@ export function MenuSignIn() {
     <div className="flex items-center justify-between">
       <h2 className="font-semibold"> Olá. Faça seu login! </h2>
 
-      <Button asChild size="icon" variant="outline">
+      <Button asChild size="icon" variant="outline" className="cursor-pointer">
         <Link href="/authentication">
           <LogInIcon />
         </Link>
