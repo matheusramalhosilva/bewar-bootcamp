@@ -9,6 +9,7 @@ import { Header } from "@/components/header";
 import { auth } from "@/lib/auth";
 
 import { Addresses } from "./_components/addresses";
+import { CartSummary } from "../_components/cart-summary";
 
 export default async function IdentificationPage() {
   const session = await auth.api.getSession({
@@ -58,7 +59,7 @@ export default async function IdentificationPage() {
           defaultShippingAddressId={cart.shippingAddress?.id || null}
         />
 
-        {/* <CartSummary
+        <CartSummary
           subtotalInCents={cartTotalInCents}
           totalInCents={cartTotalInCents}
           products={cart.items.map((item) => ({
@@ -69,7 +70,7 @@ export default async function IdentificationPage() {
             priceInCents: item.productVariant.priceInCents,
             imageUrl: item.productVariant.imageUrl,
           }))}
-        /> */}
+        />
       </div>
 
       <div className="mt-12">

@@ -6,9 +6,12 @@ export function getUseCartQueryKey() {
   return ["cart"] as const;
 }
 
-export function useCart() {
+export function useCart(params?: {
+  initialData?: Awaited<ReturnType<typeof getCart>>;
+}) {
   return useQuery({
     queryKey: getUseCartQueryKey(),
     queryFn: () => getCart(),
+    initialData: params?.initialData,
   });
 }
