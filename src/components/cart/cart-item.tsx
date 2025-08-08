@@ -8,10 +8,12 @@ import { removeProductFromCart } from "@/actions/remove-cart-product";
 import { formatPriceInCentsToBRL } from "@/utils/price-format";
 import { removeKeysString } from "@/utils/remove-keys-string";
 import { Button } from "../ui/button";
+import { addProductToCart } from "@/actions/add-cart-product";
 
 interface CartItemProps {
   id: string;
   productName: string;
+  productVariantId: string;
   productVariantName: string;
   productVariantImageUrl: string;
   productVariantPriceInCents: number;
@@ -21,6 +23,7 @@ interface CartItemProps {
 export function CartItem({
   id,
   productName,
+  productVariantId,
   productVariantName,
   productVariantImageUrl,
   productVariantPriceInCents,
@@ -64,6 +67,24 @@ export function CartItem({
     decreaseCartProductQuantityMutation(id);
   }
 
+  const { mutate: increaseCartProductQuantityMutation } = useMutation({
+    mutationKey: ['increase-cart-product-quantity'],
+    mutationFn: (itemId: string) => {
+      return addProductToCart({ productVariantId: itemId, quantity: 1 });
+    },
+    onSuccess: () => {
+      toast.success('Quantidade do produto aumentada com sucesso!');
+      queryClient.invalidateQueries({ queryKey: ['cart'] });
+    },
+    onError: () => {
+      toast.error('Erro ao aumentar quantidade do produto no carrinho.');
+    }
+  });
+
+  function handleIncreaseProductQuantity() {
+    increaseCartProductQuantityMutation(productVariantId);
+  }
+
   const productImageUrl = removeKeysString({ str: productVariantImageUrl });
 
   return (
@@ -98,7 +119,7 @@ export function CartItem({
             <Button
               variant="ghost"
               className="size-4 cursor-pointer"
-              onClick={() => { }}
+              onClick={handleIncreaseProductQuantity}
             >
               <PlusIcon />
             </Button>
