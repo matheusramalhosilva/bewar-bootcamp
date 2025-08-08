@@ -32,7 +32,7 @@ export function GoToPayment({ selectedAddress }: GoToPaymentProps) {
     <div className="mt-4">
       <Button
         onClick={handleGoToPayment}
-        className="w-full"
+        className="w-full cursor-pointer"
         disabled={updateCartShippingAddressMutation.isPending}
       >
         {updateCartShippingAddressMutation.isPending

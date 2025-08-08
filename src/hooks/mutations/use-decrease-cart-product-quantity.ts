@@ -3,18 +3,18 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { decreaseCartProductQuantity } from "@/actions/decrease-cart-product-quantity";
 import { getUseCartQueryKey } from "../queries/use-cart";
 
-export function getUseDecreaseCartProductQuantityMutation(cartItemId: string) {
+export function getUseDecreaseCartProductQuantityMutationKey(cartItemId: string) {
   return [
     'decrease-cart-product-quantity',
     cartItemId
   ] as const;
 }
 
-export function useDecreaseCartProductQuantityMutation(cartItemId: string) {
+export function useDecreaseCartProductQuantity(cartItemId: string) {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationKey: getUseDecreaseCartProductQuantityMutation(cartItemId),
+    mutationKey: getUseDecreaseCartProductQuantityMutationKey(cartItemId),
     mutationFn: () => {
       return decreaseCartProductQuantity({ cartItemId });
     },

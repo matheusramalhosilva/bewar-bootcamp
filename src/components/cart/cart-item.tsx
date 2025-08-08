@@ -2,8 +2,8 @@ import { MinusIcon, PlusIcon, TrashIcon } from "lucide-react";
 import Image from "next/image";
 import { toast } from "sonner";
 
-import { useDecreaseCartProductQuantityMutation } from "@/hooks/mutations/use-decrease-cart-product-quantity";
-import { useIncreaseCartProductQuantityMutation } from "@/hooks/mutations/use-increase-cart-product-quantity";
+import { useDecreaseCartProductQuantity } from "@/hooks/mutations/use-decrease-cart-product-quantity";
+import { useIncreaseCartProductQuantity } from "@/hooks/mutations/use-increase-cart-product-quantity";
 import { useRemoveProductFromCart } from "@/hooks/mutations/use-remove-product-from-cart";
 import { formatPriceInCentsToBRL } from "@/utils/price-format";
 import { removeKeysString } from "@/utils/remove-keys-string";
@@ -29,8 +29,8 @@ export function CartItem({
   quantity,
 }: CartItemProps) {
   const removeProductFromCartMutation = useRemoveProductFromCart(id);
-  const decreaseCartProductQuantityMutation = useDecreaseCartProductQuantityMutation(id);
-  const increaseCartProductQuantityMutation = useIncreaseCartProductQuantityMutation(productVariantId);
+  const decreaseCartProductQuantityMutation = useDecreaseCartProductQuantity(id);
+  const increaseCartProductQuantityMutation = useIncreaseCartProductQuantity(productVariantId);
 
   const productImageUrl = removeKeysString({ str: productVariantImageUrl });
 

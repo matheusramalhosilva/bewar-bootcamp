@@ -270,7 +270,7 @@ export function AddressForm({
 
         <Button
           type="submit"
-          className="w-full"
+          className="w-full cursor-pointer"
           disabled={
             createShippingAddressMutation.isPending ||
             updateCartShippingAddressMutation.isPending
