@@ -3,6 +3,7 @@ import { MinusIcon, PlusIcon, TrashIcon } from "lucide-react";
 import Image from "next/image";
 import { toast } from "sonner";
 
+import { decreaseCartProductQuantity } from "@/actions/decrease-cart-product-quantity";
 import { removeProductFromCart } from "@/actions/remove-cart-product";
 import { formatPriceInCentsToBRL } from "@/utils/price-format";
 import { removeKeysString } from "@/utils/remove-keys-string";
@@ -45,6 +46,24 @@ export function CartItem({
     removeProductFromCartMutation(id);
   }
 
+  const { mutate: decreaseCartProductQuantityMutation } = useMutation({
+    mutationKey: ['decrease-cart-product-quantity'],
+    mutationFn: (itemId: string) => {
+      return decreaseCartProductQuantity({ cartItemId: itemId });
+    },
+    onSuccess: () => {
+      toast.success('Quantidade do produto diminuída com sucesso!');
+      queryClient.invalidateQueries({ queryKey: ['cart'] });
+    },
+    onError: () => {
+      toast.error('Erro ao diminuir quantidade do produto no carrinho.');
+    }
+  });
+
+  function handleDecreaseProductQuantity() {
+    decreaseCartProductQuantityMutation(id);
+  }
+
   const productImageUrl = removeKeysString({ str: productVariantImageUrl });
 
   return (
@@ -66,13 +85,21 @@ export function CartItem({
           </p>
 
           <div className="flex w-[100px] items-center justify-between rounded-lg border p-1">
-            <Button className="size-4 cursor-pointer" variant="ghost" onClick={() => { }}>
+            <Button
+              variant="ghost"
+              className="size-4 cursor-pointer"
+              onClick={handleDecreaseProductQuantity}
+            >
               <MinusIcon />
             </Button>
 
             <p className="text-xs font-medium"> {quantity} </p>
 
-            <Button className="size-4 cursor-pointer" variant="ghost" onClick={() => { }}>
+            <Button
+              variant="ghost"
+              className="size-4 cursor-pointer"
+              onClick={() => { }}
+            >
               <PlusIcon />
             </Button>
           </div>
