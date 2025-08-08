@@ -12,7 +12,7 @@ const removeProductFromCartSchema = z.object({
   cartItemId: z.uuid(),
 });
 
-export type RemoveProductFromCartSchema = z.infer<typeof removeProductFromCartSchema>;
+type RemoveProductFromCartSchema = z.infer<typeof removeProductFromCartSchema>;
 
 export async function removeProductFromCart(data: RemoveProductFromCartSchema) {
   // valida os dados

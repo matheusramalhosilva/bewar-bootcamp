@@ -16,9 +16,9 @@ type DecreaseCartProductQuantitySchema = z.infer<
   typeof decreaseCartProductQuantitySchema
 >;
 
-export const decreaseCartProductQuantity = async (
+export async function decreaseCartProductQuantity(
   data: DecreaseCartProductQuantitySchema,
-) => {
+) {
   // valida os dados
   decreaseCartProductQuantitySchema.parse(data);
 

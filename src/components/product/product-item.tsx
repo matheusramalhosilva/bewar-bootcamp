@@ -4,7 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 
 import type { productTable, productVariantTable } from "@/db/schema"
-import { cn } from "@/lib/cn"
+import { cn } from "@/lib/utils"
 import { formatPriceInCentsToBRL } from "@/utils/price-format"
 import { removeKeysString } from "@/utils/remove-keys-string"
 

@@ -13,7 +13,7 @@ const addProductToCartSchema = z.object({
   quantity: z.number().min(1),
 });
 
-export type AddProductToCartSchema = z.infer<typeof addProductToCartSchema>;
+type AddProductToCartSchema = z.infer<typeof addProductToCartSchema>;
 
 export async function addProductToCart(data: AddProductToCartSchema) {
   // valida os dados

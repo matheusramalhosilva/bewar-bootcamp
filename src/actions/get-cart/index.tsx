@@ -6,7 +6,7 @@ import { db } from "@/db";
 import { cartTable } from "@/db/schema";
 import { auth } from "@/lib/auth";
 
-export default async function getCart() {
+export async function getCart() {
   // valida se o usuário está autenticado
   const session = await auth.api.getSession({
     headers: await headers(),

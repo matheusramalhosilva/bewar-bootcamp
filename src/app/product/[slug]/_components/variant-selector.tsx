@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { productVariantTable } from "@/db/schema";
-import { cn } from "@/lib/cn";
+import { cn } from "@/lib/utils";
 import { removeKeysString } from "@/utils/remove-keys-string";
 
 type VariantSelectorProps = {

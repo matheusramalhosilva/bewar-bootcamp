@@ -4,6 +4,8 @@ import type { ReactNode } from "react";
 
 import { Separator } from "@/components/ui/separator";
 import { formatPriceInCentsToBRL } from "@/utils/price-format";
+import { Button } from "../ui/button";
+import Link from "next/link";
 
 type CartFooterProps = {
   totalPriceInCents: number
@@ -38,7 +40,9 @@ export function CartFooter({ totalPriceInCents, children }: CartFooterProps) {
         </p>
       </div>
 
-      {children}
+      <Button asChild className="mt-5 rounded-full cursor-pointer">
+        <Link href="/cart/identification"> Finalizar compra </Link>
+      </Button>
     </div>
   );
 };

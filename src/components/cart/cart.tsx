@@ -2,7 +2,6 @@
 
 import { useCart } from "@/hooks/queries/use-cart";
 import {
-  CartCompletePurchase,
   CartFooter,
   CartItem,
   CartListItems,
@@ -32,9 +31,7 @@ export function Cart() {
       </CartListItems>
 
       {cart?.items && cart?.items.length > 0 && (
-        <CartFooter totalPriceInCents={cart.totalPriceInCents}>
-          <CartCompletePurchase />
-        </CartFooter>
+        <CartFooter totalPriceInCents={cart.totalPriceInCents} />
       )}
     </CartRoot>
   );
