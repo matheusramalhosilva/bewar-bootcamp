@@ -4,7 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 
 import type { productTable, productVariantTable } from "@/db/schema"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/cn"
 import { formatPriceInCentsToBRL } from "@/utils/price-format"
 import { removeKeysString } from "@/utils/remove-keys-string"
 
@@ -15,15 +15,14 @@ type ProductItemProps = {
   textContainerClassName?: string
 }
 
-export default function ProductItem({ product, textContainerClassName }: ProductItemProps) {
+export function ProductItem({ product, textContainerClassName }: ProductItemProps) {
   const firstProductVariant = product.variants[0]
-
-  const imageUrl = removeKeysString({ str: firstProductVariant.imageUrl });
+  const productImageUrl = removeKeysString({ str: firstProductVariant.imageUrl });
 
   return (
     <Link className="flex flex-col gap-4" href={`/product/${firstProductVariant.slug}`}>
       <Image
-        src={imageUrl}
+        src={productImageUrl}
         alt={firstProductVariant.name}
         sizes="100vw"
         width={0}

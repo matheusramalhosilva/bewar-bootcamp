@@ -2,13 +2,13 @@ import { eq } from "drizzle-orm";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
-import ProductList from "@/components/common/product-list";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { db } from "@/db";
 import { productTable, productVariantTable } from "@/db/schema";
 import { formatPriceInCentsToBRL } from "@/utils/price-format";
 
+import { ProductItem, ProductRoot, ProductList } from "@/components/product";
 import { removeKeysString } from "@/utils/remove-keys-string";
 import ProductActions from "./_components/product-actions";
 import VariantSelector from "./_components/variant-selector";
@@ -87,8 +87,13 @@ export default async function ProductPage({ params }: ProductPageProps) {
           </p>
         </div>
 
-        <ProductList title="Talvez você goste" products={likelyProducts} />
-
+        <ProductRoot title="Talvez você goste">
+          <ProductList>
+            {likelyProducts.length > 0 && likelyProducts.map((product) => (
+              <ProductItem key={product.id} product={product} />
+            ))}
+          </ProductList>
+        </ProductRoot>
         <Footer />
       </div>
     </>

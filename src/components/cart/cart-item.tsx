@@ -2,9 +2,8 @@ import { MinusIcon, PlusIcon, TrashIcon } from "lucide-react";
 import Image from "next/image";
 
 import { formatPriceInCentsToBRL } from "@/utils/price-format";
-
-import { Button } from "../ui/button";
 import { removeKeysString } from "@/utils/remove-keys-string";
+import { Button } from "../ui/button";
 
 interface CartItemProps {
   id: string;
@@ -15,7 +14,7 @@ interface CartItemProps {
   quantity: number;
 }
 
-export default function CartItem({
+export function CartItem({
   id,
   productName,
   productVariantName,
@@ -23,13 +22,13 @@ export default function CartItem({
   productVariantPriceInCents,
   quantity,
 }: CartItemProps) {
-  const imageUrl = removeKeysString({ str: productVariantImageUrl });
+  const productImageUrl = removeKeysString({ str: productVariantImageUrl });
 
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex items-center justify-between" id={id}>
       <div className="flex items-center gap-4">
         <Image
-          src={imageUrl}
+          src={productImageUrl}
           alt={productVariantName}
           width={78}
           height={78}

@@ -3,9 +3,9 @@ import Image from "next/image";
 
 import { BrandItem, BrandList, BrandRoot, BrandTitle } from "@/components/brand";
 import { CategoryItem, CategoryRoot } from "@/components/category";
-import ProductList from "@/components/common/product-list";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
+import { ProductItem, ProductRoot, ProductList } from "@/components/product";
 import { db } from "@/db";
 import { productTable } from "@/db/schema";
 import { BRANDS_MOCK } from "@/mocks/brand-mock";
@@ -52,7 +52,13 @@ export default async function Home() {
           </BrandList>
         </BrandRoot>
 
-        <ProductList title="Mais vendidos" products={products} />
+        <ProductRoot title="Mais vendidos">
+          <ProductList>
+            {products.length > 0 && products.map((product) => (
+              <ProductItem key={product.id} product={product} />
+            ))}
+          </ProductList>
+        </ProductRoot>
 
         <div className="px-5">
           <CategoryRoot>
@@ -73,7 +79,13 @@ export default async function Home() {
           />
         </div>
 
-        <ProductList title="Novos produtos" products={newlyCreatedProducts} />
+        <ProductRoot title="Novos produtos">
+          <ProductList>
+            {newlyCreatedProducts.length > 0 && newlyCreatedProducts.map((product) => (
+              <ProductItem key={product.id} product={product} />
+            ))}
+          </ProductList>
+        </ProductRoot>
 
         <Footer />
       </div>

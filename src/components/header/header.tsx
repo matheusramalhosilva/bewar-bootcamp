@@ -1,13 +1,8 @@
 import Image from "next/image"
 import Link from "next/link"
-import type { ReactNode } from "react"
 
-import Cart from "../common/cart"
-import { Menu } from "../menu/menu"
-
-// type HeaderProps = {
-//   children?: ReactNode
-// }
+import { Cart } from "@/components/cart/cart"
+import { Menu } from "@/components/menu/menu"
 
 export function Header() {
   return (
