@@ -1,14 +1,13 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { MinusIcon, PlusIcon, TrashIcon } from "lucide-react";
 import Image from "next/image";
 import { toast } from "sonner";
 
-import { decreaseCartProductQuantity } from "@/actions/decrease-cart-product-quantity";
-import { removeProductFromCart } from "@/actions/remove-cart-product";
+import { useDecreaseCartProductQuantityMutation } from "@/hooks/mutations/use-decrease-cart-product-quantity";
+import { useIncreaseCartProductQuantityMutation } from "@/hooks/mutations/use-increase-cart-product-quantity";
+import { useRemoveProductFromCart } from "@/hooks/mutations/use-remove-product-from-cart";
 import { formatPriceInCentsToBRL } from "@/utils/price-format";
 import { removeKeysString } from "@/utils/remove-keys-string";
 import { Button } from "../ui/button";
-import { addProductToCart } from "@/actions/add-cart-product";
 
 interface CartItemProps {
   id: string;
@@ -29,63 +28,44 @@ export function CartItem({
   productVariantPriceInCents,
   quantity,
 }: CartItemProps) {
-  const queryClient = useQueryClient();
-
-  const { mutate: removeProductFromCartMutation } = useMutation({
-    mutationKey: ['remove-cart-product'],
-    mutationFn: (itemId: string) => {
-      return removeProductFromCart({ cartItemId: itemId });
-    },
-    onSuccess: () => {
-      toast.success('Produto removido do carrinho com sucesso!');
-      queryClient.invalidateQueries({ queryKey: ['cart'] });
-    },
-    onError: () => {
-      toast.error('Erro ao remover produto do carrinho.');
-    }
-  });
-
-  function handleRemoveProductFromCart() {
-    removeProductFromCartMutation(id);
-  }
-
-  const { mutate: decreaseCartProductQuantityMutation } = useMutation({
-    mutationKey: ['decrease-cart-product-quantity'],
-    mutationFn: (itemId: string) => {
-      return decreaseCartProductQuantity({ cartItemId: itemId });
-    },
-    onSuccess: () => {
-      toast.success('Quantidade do produto diminuída com sucesso!');
-      queryClient.invalidateQueries({ queryKey: ['cart'] });
-    },
-    onError: () => {
-      toast.error('Erro ao diminuir quantidade do produto no carrinho.');
-    }
-  });
-
-  function handleDecreaseProductQuantity() {
-    decreaseCartProductQuantityMutation(id);
-  }
-
-  const { mutate: increaseCartProductQuantityMutation } = useMutation({
-    mutationKey: ['increase-cart-product-quantity'],
-    mutationFn: (itemId: string) => {
-      return addProductToCart({ productVariantId: itemId, quantity: 1 });
-    },
-    onSuccess: () => {
-      toast.success('Quantidade do produto aumentada com sucesso!');
-      queryClient.invalidateQueries({ queryKey: ['cart'] });
-    },
-    onError: () => {
-      toast.error('Erro ao aumentar quantidade do produto no carrinho.');
-    }
-  });
-
-  function handleIncreaseProductQuantity() {
-    increaseCartProductQuantityMutation(productVariantId);
-  }
+  const removeProductFromCartMutation = useRemoveProductFromCart(id);
+  const decreaseCartProductQuantityMutation = useDecreaseCartProductQuantityMutation(id);
+  const increaseCartProductQuantityMutation = useIncreaseCartProductQuantityMutation(productVariantId);
 
   const productImageUrl = removeKeysString({ str: productVariantImageUrl });
+
+  function handleRemoveProductFromCart() {
+    removeProductFromCartMutation.mutate(undefined, {
+      onSuccess: () => {
+        toast.success('Produto removido do carrinho com sucesso!');
+      },
+      onError: () => {
+        toast.error('Erro ao remover produto do carrinho.');
+      }
+    });
+  }
+
+  function handleDecreaseProductQuantity() {
+    decreaseCartProductQuantityMutation.mutate(undefined, {
+      onSuccess: () => {
+        toast.success('Quantidade do produto diminuída com sucesso!');
+      },
+      onError: () => {
+        toast.error('Erro ao diminuir quantidade do produto no carrinho.');
+      }
+    });
+  }
+
+  function handleIncreaseProductQuantity() {
+    increaseCartProductQuantityMutation.mutate(undefined, {
+      onSuccess: () => {
+        toast.success('Quantidade do produto aumentada com sucesso!');
+      },
+      onError: () => {
+        toast.error('Erro ao aumentar quantidade do produto no carrinho.');
+      }
+    });
+  }
 
   return (
     <div className="flex items-center justify-between" id={id}>

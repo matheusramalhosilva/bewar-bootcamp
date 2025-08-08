@@ -1,8 +1,6 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
-
-import getCart from "@/actions/get-cart";
+import { useCart } from "@/hooks/queries/use-cart";
 import {
   CartCompletePurchase,
   CartFooter,
@@ -12,10 +10,7 @@ import {
 } from "./index";
 
 export function Cart() {
-  const { data: cart, isPending: cartIsLoading } = useQuery({
-    queryKey: ["cart"],
-    queryFn: () => getCart(),
-  });
+  const { data: cart } = useCart();
 
   return (
     <CartRoot name="Carrinho">
