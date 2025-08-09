@@ -34,8 +34,8 @@ export default function DialogSuccess() {
         </DialogDescription>
 
         <DialogFooter className="sm:justify-center">
-          <Button className="rounded-full cursor-pointer" size="lg">
-            Ver meus pedidos
+          <Button asChild className="rounded-full cursor-pointer" size="lg">
+            <Link href="/my-orders"> Ver meus pedidos </Link>
           </Button>
 
           <Button

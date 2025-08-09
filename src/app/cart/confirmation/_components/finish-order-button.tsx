@@ -33,19 +33,17 @@ export function FinishOrderButton() {
   };
 
   return (
-    <>
-      <Button
-        className="w-full rounded-full cursor-pointer"
-        size="lg"
-        onClick={handleFinishOrder}
-        disabled={finishOrderMutation.isPending}
-      >
-        {finishOrderMutation.isPending && (
-          <Loader2 className="h-4 w-4 animate-spin" />
-        )}
+    <Button
+      className="w-full rounded-full cursor-pointer"
+      size="lg"
+      onClick={handleFinishOrder}
+      disabled={finishOrderMutation.isPending}
+    >
+      {finishOrderMutation.isPending && (
+        <Loader2 className="h-4 w-4 animate-spin" />
+      )}
 
-        Finalizar compra
-      </Button>
-    </>
+      Finalizar compra
+    </Button>
   );
 };

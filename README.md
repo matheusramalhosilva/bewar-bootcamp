@@ -1,4 +1,5 @@
-S-E-X-F-
+S-E-X-F-X
+
 # 🚀 BEWEAR Bootcamp
 
 ![thumbnail](.github/thumbnail.png?style=flat)
@@ -9,6 +10,7 @@ S-E-X-F-
 - [🔗 Stack](#-stack)
 - [🛟 Pré-requisitos](#-pré-requisitos)
 - [🛠️ Instalação e setup](#-instalação-e-setup)
+- [🔖 Layout da Aplicação](#-layout)
 - [🧪 Testes e Qualidade de Código](#-testes-e-qualidade-de-código)
 - [🚚 CI/CD e Publicação](#-cicd-e-publicação)
 - [🚀 Deploy](#-deploy)
@@ -27,9 +29,13 @@ Projeto utilizando NextJS e integração com Stripe para pagamentos.
 - **[Nextjs](https://nextjs.org/docs)**: Framework para Reactjs
 - **[TailwindCSS](https://tailwindcss.com/docs/installation/framework-guides/nextjs)**: Framework para estilização
 - **[Typescript](https://www.typescriptlang.org)**: Pacote para javascript tipado
-- **[Tanstack query]
-- **[Stripe]
-- **[Jest](https://jestjs.io/)**: Biblioteca para testes
+- **[Shadcn/ui](https://ui.shadcn.com/)**: Biblioteca de componentes UI reutilizáveis e personalizáveis
+- **[Tanstack query](https://tanstack.com/query)**: Pacote para requisições client-side
+- **[React hook form](https://react-hook-form.com/)**: Biblioteca para gerenciamento de formulários em React
+- **[Zod](https://zod.dev/)**: Biblioteca para validação de schemas e tipagem em TypeScript
+- **[PostgreSQL](https://www.postgresql.org/)**: Sistema de gerenciamento de banco de dados relacional
+- **[Drizzle](https://orm.drizzle.team/)**: ORM para gerenciamento de banco de dados
+- **[Stripe](stripe.com)**: Pacote de gateway de pagamento
 - **[GitHub Actions](https://docs.github.com/en/actions)**: Ferramenta de CI/CD para automação de fluxos de trabalho.
 
 ## 🛟 Pré-requisitos
@@ -39,10 +45,19 @@ Antes de começar, verifique se atendeu aos seguintes requisitos:
 - [Node](https://nodejs.org)
 - [Npm](https://www.npmjs.com/)
 - [VsCode ou similar](https://code.visualstudio.com/)
+- [Criar conta no Google console]()
+- [Criar conta no Stripe]()
+- [Instalar Stripe CLI]()
 
 ## 🛠️ Instalação e Setup
 
 Para começar a usar o `bewear-bootcamp`, siga os passos abaixo:
+
+1. Clone o projeto:
+
+   ```bash
+   git clone https://github.com/matheusramalhosilva/bewear-bootcamp
+   ```
 
 1. Instale as dependências do projeto:
 
@@ -56,16 +71,15 @@ Para começar a usar o `bewear-bootcamp`, siga os passos abaixo:
    npm run dev
    ```
 
-3. Para rodar os testes:
+## 🔖 Layout
 
-   ```bash
-   npm run test
-   ```
+Você pode visualizar o layout do projeto através [desse link](). É necessário ter conta no [Figma](https://www.figma.com/design/Dpix6oZH9Xp5apJJVF68xJ/BEWEAR%C2%AE--Bootcamp-?node-id=2001-689&t=IdyHaDl2RMIa3n7o-0) para acessá-lo.
+
 
 ## 🧪 Testes e Qualidade de Código
 
-- **Jest**: Para testes unitários.
-- **ESLint**: Para garantir a qualidade do código.ee
+- **ESLint**: Para garantir a formatação do código
+- **Prettier: Para garantir a formatação do código
 
 ## 🚚 CI/CD e Publicação
 
@@ -73,7 +87,7 @@ A publicação dos pacotes é automatizada via [GitHub Actions](https://docs.git
 
 ## 🚀 Deploy
 
-Você pode visualizar o deploy do projeto na vercel através [desse link](https://trinomate.vercel.app/).
+Você pode visualizar o deploy do projeto na vercel através [desse link]().
 
 ## 📝 Licença
 

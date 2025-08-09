@@ -1,7 +1,7 @@
+import { OrderSummary } from "@/components/order-summary";
 import { ProductItemHorizontal } from "@/components/product";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { formatPriceInCentsToBRL } from "@/utils/price-format";
 
 type ProductItem = {
   id: string;
@@ -30,30 +30,12 @@ export function CartSummary({
       </CardHeader>
 
       <CardContent className="space-y-3">
-        <div className="flex justify-between">
-          <p className="text-sm"> Subtotal </p>
+        <OrderSummary
+          subtotalInCents={subtotalInCents}
+          totalInCents={totalInCents}
+        />
 
-          <p className="text-muted-foreground text-sm font-medium">
-            {formatPriceInCentsToBRL({ priceInCents: subtotalInCents })}
-          </p>
-        </div>
-
-        <div className="flex justify-between">
-          <p className="text-sm"> Frete </p>
-          <p className="text-muted-foreground text-sm font-medium"> GRÁTIS </p>
-        </div>
-
-        <div className="flex justify-between">
-          <p className="text-sm"> Total </p>
-
-          <p className="text-muted-foreground text-sm font-medium">
-            {formatPriceInCentsToBRL({ priceInCents: totalInCents })}
-          </p>
-        </div>
-
-        <div className="py-3">
-          <Separator />
-        </div>
+        <Separator className="my-3" />
 
         {products.map((product) => (
           <ProductItemHorizontal

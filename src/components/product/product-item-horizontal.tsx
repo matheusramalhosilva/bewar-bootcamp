@@ -37,7 +37,7 @@ export function ProductItemHorizontal({
           <p className="text-sm font-semibold"> {name} </p>
 
           <p className="text-muted-foreground text-xs font-medium">
-            {variantName}
+            {variantName} | {quantity}
           </p>
         </div>
       </div>
