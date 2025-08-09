@@ -60,13 +60,15 @@ Para começar a usar o `bewear-bootcamp`, siga os passos abaixo:
    git clone https://github.com/matheusramalhosilva/bewear-bootcamp
    ```
 
-1. Instale as dependências do projeto:
+2. Crie o env example e preencha as variaveis
+
+3. Instale as dependências do projeto:
 
    ```bash
    npm install
    ```
 
-2. Inicie o ambiente de desenvolvimento:
+42. Inicie o ambiente de desenvolvimento:
 
    ```bash
    npm run dev
