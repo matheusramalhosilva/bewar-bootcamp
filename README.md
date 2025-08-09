@@ -34,6 +34,7 @@ Projeto utilizando NextJS e integração com Stripe para pagamentos.
 - **[React hook form](https://react-hook-form.com/)**: Biblioteca para gerenciamento de formulários em React
 - **[Zod](https://zod.dev/)**: Biblioteca para validação de schemas e tipagem em TypeScript
 - **[PostgreSQL](https://www.postgresql.org/)**: Sistema de gerenciamento de banco de dados relacional
+- **[Neon](https://neon.com/)**: Plataforma de banco de dados PostgreSQL serverless na nuvem
 - **[Drizzle](https://orm.drizzle.team/)**: ORM para gerenciamento de banco de dados
 - **[Stripe](stripe.com)**: Pacote de gateway de pagamento
 - **[GitHub Actions](https://docs.github.com/en/actions)**: Ferramenta de CI/CD para automação de fluxos de trabalho.
