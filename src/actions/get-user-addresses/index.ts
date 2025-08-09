@@ -8,6 +8,7 @@ import { shippingAddressTable } from "@/db/schema";
 import { auth } from "@/lib/auth";
 
 export async function getUserAddresses() {
+  // valida se o usuário está autenticado
   const session = await auth.api.getSession({
     headers: await headers(),
   });

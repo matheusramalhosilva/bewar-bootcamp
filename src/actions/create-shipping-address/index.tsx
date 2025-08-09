@@ -29,8 +29,10 @@ type CreateShippingAddressSchema = z.infer<
 export async function createShippingAddress(
   data: CreateShippingAddressSchema,
 ) {
+  // valida os dados
   createShippingAddressSchema.parse(data);
 
+  // valida se o usuário está autenticado
   const session = await auth.api.getSession({
     headers: await headers(),
   });
@@ -39,6 +41,7 @@ export async function createShippingAddress(
     throw new Error("Unauthorized");
   }
 
+  //
   const [shippingAddress] = await db
     .insert(shippingAddressTable)
     .values({

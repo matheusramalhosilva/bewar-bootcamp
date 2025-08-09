@@ -19,8 +19,10 @@ export type UpdateCartShippingAddressSchema = z.infer<
 export async function updateCartShippingAddress(
   data: UpdateCartShippingAddressSchema,
 ) {
+  // valida os dados
   updateCartShippingAddressSchema.parse(data);
 
+  // valida se o usuário está autenticado
   const session = await auth.api.getSession({
     headers: await headers(),
   });
