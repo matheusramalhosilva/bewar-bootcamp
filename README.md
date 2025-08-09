@@ -99,5 +99,5 @@ Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 ## 🧠 Desenvolvedores
 
 | [![Matheus Ramalho](https://avatars.githubusercontent.com/u/15633283?v=4&s=100)](https://github.com/MatheusRamalho)
-|:---:|:---:|
-| **Matheus Ramalho** |
+|:---:|
+**Matheus Ramalho**
