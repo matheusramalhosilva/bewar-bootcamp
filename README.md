@@ -1,5 +1,3 @@
-S-E-X-F-X
-
 # 🚀 BEWEAR Bootcamp
 
 ![thumbnail](.github/thumbnail.png?style=flat)
