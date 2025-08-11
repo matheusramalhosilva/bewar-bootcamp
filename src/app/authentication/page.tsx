@@ -1,3 +1,4 @@
+import { Header } from "@/components/header";
 import {
   Tabs,
   TabsContent,
@@ -5,7 +6,6 @@ import {
   TabsTrigger,
 } from "@/components/ui/tabs"
 
-import { Header } from "@/components/header";
 import SignInForm from "./_components/sign-in-form"
 import SignUpForm from "./_components/sign-up-form"
 

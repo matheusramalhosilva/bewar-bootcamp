@@ -85,6 +85,7 @@ export function Orders({ orders }: OrdersProps) {
                   <AccordionContent>
                     {order.items.map((product) => (
                       <ProductItemHorizontal
+                        key={product.id}
                         id={product.id}
                         name={product.productName}
                         variantName={product.productVariantName}

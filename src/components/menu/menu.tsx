@@ -1,6 +1,7 @@
 'use client'
 
 import { authClient } from "@/lib/auth-client"
+
 import { MenuContent, MenuRoot, MenuSignIn, MenuSignOut, MenuUserInfo } from "./index"
 
 export function Menu() {

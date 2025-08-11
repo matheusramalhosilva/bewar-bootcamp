@@ -1,18 +1,16 @@
 "use client";
 
-import type { ReactNode } from "react";
+import Link from "next/link";
 
+import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { formatPriceInCentsToBRL } from "@/utils/price-format";
-import { Button } from "../ui/button";
-import Link from "next/link";
 
 type CartFooterProps = {
   totalPriceInCents: number
-  children?: ReactNode
 }
 
-export function CartFooter({ totalPriceInCents, children }: CartFooterProps) {
+export function CartFooter({ totalPriceInCents }: CartFooterProps) {
   return (
     <div className="flex flex-col gap-4">
       <Separator />

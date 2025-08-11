@@ -7,6 +7,7 @@ import { useIncreaseCartProductQuantity } from "@/hooks/mutations/use-increase-c
 import { useRemoveProductFromCart } from "@/hooks/mutations/use-remove-product-from-cart";
 import { formatPriceInCentsToBRL } from "@/utils/price-format";
 import { removeKeysString } from "@/utils/remove-keys-string";
+
 import { Button } from "../ui/button";
 
 interface CartItemProps {

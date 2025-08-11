@@ -5,7 +5,7 @@ import { BrandItem, BrandList, BrandRoot, BrandTitle } from "@/components/brand"
 import { CategoryItem, CategoryRoot } from "@/components/category";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
-import { ProductItem, ProductRoot, ProductList } from "@/components/product";
+import { ProductItem, ProductList,ProductRoot } from "@/components/product";
 import { db } from "@/db";
 import { productTable } from "@/db/schema";
 import { BRANDS_MOCK } from "@/mocks/brand-mock";

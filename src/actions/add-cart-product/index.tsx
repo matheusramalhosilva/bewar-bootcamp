@@ -1,12 +1,12 @@
 "use server"
 
+import { eq } from "drizzle-orm";
 import { headers } from "next/headers";
 import { z } from "zod";
 
 import { db } from "@/db";
 import { cartItemTable, cartTable } from "@/db/schema";
 import { auth } from "@/lib/auth";
-import { eq } from "drizzle-orm";
 
 const addProductToCartSchema = z.object({
   productVariantId: z.uuid(),

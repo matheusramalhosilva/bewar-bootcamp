@@ -4,12 +4,12 @@ import { notFound } from "next/navigation";
 
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
+import { ProductItem, ProductList,ProductRoot } from "@/components/product";
 import { db } from "@/db";
 import { productTable, productVariantTable } from "@/db/schema";
 import { formatPriceInCentsToBRL } from "@/utils/price-format";
-
-import { ProductItem, ProductRoot, ProductList } from "@/components/product";
 import { removeKeysString } from "@/utils/remove-keys-string";
+
 import ProductActions from "./_components/product-actions";
 import VariantSelector from "./_components/variant-selector";
 

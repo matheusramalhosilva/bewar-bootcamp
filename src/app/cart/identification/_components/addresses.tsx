@@ -1,6 +1,5 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -20,8 +19,6 @@ export function Addresses({
   shippingAddresses,
   defaultShippingAddressId,
 }: AddressesProps) {
-  const router = useRouter();
-
   const [selectedAddress, setSelectedAddress] = useState<string | null>(
     defaultShippingAddressId || null,
   );
